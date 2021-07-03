@@ -1,0 +1,47 @@
+Greedy method:
+#shop in candy store
+static ArrayList<Integer> candyStore(int candies[],int N,int K){
+        // code here
+        ArrayList<Integer> can=new ArrayList<Integer>();
+        Arrays.sort(candies);
+        int min_cost=0,max_cost=0;
+        int i=0,j=N-1;
+        while(i<=j)
+        {
+            min_cost+=candies[i];
+            i++;
+            j-=K;
+        }
+        i=0;
+        j=N-1;
+        while(i<=j)
+        {
+            max_cost+=candies[j];
+            j--;
+            i+=K;
+        }
+        can.add(min_cost);
+        can.add(max_cost);
+        return can;
+    }
+    
+#Maximize toys
+static int toyCount(int N, int K, int arr[])
+    {
+        // code here
+        Arrays.sort(arr);
+        int sum=K,p=0;
+        for(int i=0;i<N;i++)
+        {
+            if((sum-arr[i])>=0)
+            {
+            sum-=arr[i];
+            p++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        return p;
+    }
